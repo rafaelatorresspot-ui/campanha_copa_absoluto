@@ -1425,6 +1425,35 @@ function blobSvgRight(p){
     <line x1="100" y1="208" x2="600" y2="208" stroke="${p.b1}" stroke-width="2" opacity=".18" clip-path="url(#clipR${id})"/>
   </svg>`;
 }
+// ── Helper: image load error → revert slot to empty state ──
+function slotImgError(img){
+  img.onerror=null;
+  var sl=img.closest('.panini-slot');
+  if(!sl)return;
+  sl.className='panini-slot';
+  // find team/sticker ids from slot id  (psc-teamid-stickerid)
+  var parts=(sl.id||'').split('-');
+  if(parts.length<3)return;
+  var tid=parts[1], sid=parts.slice(2).join('-');
+  var t=TEAMS.find(function(x){return x.id===tid;});
+  var s=STICKERS.find(function(x){return x.id===sid;});
+  if(!t||!s)return;
+  var p=PANINI[t.id];
+  var slotColor=s.num%2===1?p.sA:p.sB;
+  var codeLabel=t.id.slice(0,3).toUpperCase()+'-'+s.num;
+  sl.innerHTML='<div class="panini-slot-inner" style="'+
+    'background:color-mix(in srgb,'+slotColor+' 45%,white);'+
+    'border:3px solid rgba(255,255,255,.6);border-radius:5px;'+
+    'position:absolute;inset:0;overflow:hidden;'+
+    'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;">'+
+    '<div class="panini-slot-code" style="color:'+p.st+'">'+codeLabel+'</div>'+
+    '<div class="panini-slot-num-bg" style="color:rgba(255,255,255,.4)">'+s.num+'</div>'+
+    '<div style="position:absolute;bottom:6px;left:0;right:0;text-align:center;'+
+    'font-family:Barlow Condensed,sans-serif;font-size:8px;font-weight:700;'+
+    'letter-spacing:.5px;color:'+p.st+';opacity:.55;text-transform:uppercase;'+
+    'padding:0 4px;line-height:1.3">'+s.label+'</div></div>';
+}
+
 // ── Build sticker slot (Panini style) ──
 function buildPaniniSlot(t, s, slotColor){
   const e   = isEarned(t.id, s.id);
@@ -1462,7 +1491,7 @@ function buildPaniniSlot(t, s, slotColor){
            src="${REPO}/stickers/${t.id}/${s.id}.png?t=${imgTs}"
            alt="${s.label}"
            style="width:100%;height:100%;object-fit:cover;display:block;"
-           onerror="this.closest('.panini-slot').outerHTML=\`${emptyHtml.replace(/`/g,'\\`')}\`;this.onerror=null;">
+           onerror="slotImgError(this);">
     </div>
   </div>`;
 }
@@ -1690,17 +1719,37 @@ function refreshUI(){
 async function recarregar(){
   await carregarDados();
   imgTs = Date.now();
-  // Rebuild pages to reflect any new earned stickers, then refresh img src cache
+  // Salva time ativo antes de reconstruir
+  const activeTeam = currentTeam;
+  // Rebuild pages completely — slots gerados já com estado correto (earned/empty)
   buildPages();
-  refreshUI();
-  // After rebuild, update all img src with new timestamp to bust cache
-  TEAMS.forEach(t => STICKERS.forEach(s => {
-    const img = document.getElementById('img-'+t.id+'-'+s.id);
-    if(img){
-      img.style.display = '';
-      img.src = REPO+'/stickers/'+t.id+'/'+s.id+'.png?t='+imgTs;
-    }
-  }));
+  // Restaura a aba/página ativa
+  if(activeTeam){
+    const page=document.getElementById('page-'+activeTeam);
+    if(page)page.classList.add('active');
+    const tab=document.getElementById('tab-'+activeTeam);
+    if(tab)tab.classList.add('active');
+  }
+  // Atualiza apenas contadores, barras e badges (NÃO chamar refreshUI aqui)
+  const gp=globalProg();
+  const bar=document.getElementById('cv-bar'); if(bar)bar.style.width=gp.pct+'%';
+  const cvp=document.getElementById('cv-pct'); if(cvp)cvp.textContent=gp.pct+'%';
+  TEAMS.forEach(t=>{
+    const {earned,total,pct}=teamProg(t.id);
+    ['pill-','tab-','fill-','pct-','cnt-'].forEach(pfx=>{
+      const el=document.getElementById(pfx+t.id); if(!el)return;
+      if(pfx==='fill-')el.style.width=pct+'%';
+      else if(pfx==='tab-')el.classList.toggle('has-s',earned>0);
+      else if(pfx==='pct-')el.textContent=pct+'%';
+      else if(pfx==='cnt-')el.textContent=earned;
+      else el.textContent=pct+'%';
+    });
+    const ca=document.getElementById('afn-cnt-'+t.id); if(ca)ca.textContent=earned+' de '+total+' figurinhas';
+    const badge=document.getElementById('badge-'+t.id);
+    if(badge)badge.classList.toggle('show',earned===STICKERS.length);
+    if(earned===STICKERS.length)launchConfetti();
+  });
+  atualizarStatusBar('Atualizado às '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}));
 }
 
 function launchConfetti(){
