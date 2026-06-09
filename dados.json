@@ -35,6 +35,7 @@
     },
     "canada": {
       "autofalante": true,
+      "criativo_copa_2": true,
       "pe_50pct_prom": true,
       "ilha_20pct": true,
       "display_turbilhao": true,
@@ -88,6 +89,7 @@
     },
     "belgica": {
       "autofalante": true,
+      "criativo_copa_2": true,
       "pe_50pct_prom": true,
       "terminal_20pct": true,
       "ilha_20pct": true,
