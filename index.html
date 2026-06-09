@@ -519,12 +519,26 @@ body{background:#1a0a2e;font-family:'Barlow',sans-serif;color:white;min-height:1
 .premio-grid{
   padding:14px 20px 18px;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 .premio-card{
   border-radius:10px;padding:14px;
   display:flex;flex-direction:column;gap:4px;
+  min-width:0;
+}
+@media(max-width:600px){
+  .premio-grid{
+    grid-template-columns:1fr;
+  }
+}
+@media(min-width:601px) and (max-width:860px){
+  .premio-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .premio-grid .premio-card:last-child{
+    grid-column:1/-1;
+  }
 }
 .premio-card-role{
   font-size:9px;letter-spacing:2px;text-transform:uppercase;
@@ -1156,23 +1170,9 @@ body.theme-b .rules-footer-nav div{color:rgba(232,213,160,.5)}
         </div>
       </div>
 
-      <!-- MECÂNICA SUPERVISOR -->
-      <div class="rules-section">
-        <div class="rules-section-head">
-          <div class="rsh-icon" style="background:#E0F2FE">👔</div>
-          <div class="rsh-title">Mecânica do Supervisor</div>
-          <div class="rsh-badge" style="background:#E0F2FE;color:#075985">Gestão</div>
-        </div>
-        <div class="rules-items">
-          <div class="rule-item"><div class="rule-dot" style="background:#0284C7"></div>Supervisor acompanha <strong>seu time de promotores</strong></div>
-          <div class="rule-item"><div class="rule-dot" style="background:#0284C7"></div>Cada supervisor representa uma <strong>seleção</strong> no álbum</div>
-          <div class="rule-item"><div class="rule-dot" style="background:#0284C7"></div>Figurinhas são desbloqueadas conforme <strong>a equipe atinge as metas</strong></div>
-          <div class="rule-item"><div class="rule-dot" style="background:#0284C7"></div>O supervisor recebe a <strong>média da pontuação</strong> de seus promotores</div>
-        </div>
-      </div>
 
       <!-- PREMIAÇÃO -->
-      <div class="rules-section">
+      <div class="rules-section full">
         <div class="rules-section-head">
           <div class="rsh-icon" style="background:#FEF9C3">💰</div>
           <div class="rsh-title">Premiação</div>
@@ -1180,27 +1180,22 @@ body.theme-b .rules-footer-nav div{color:rgba(232,213,160,.5)}
         </div>
         <div class="premio-grid">
           <div class="premio-card" style="background:#F0FDF4;border:1.5px solid #BBF7D0">
-            <div class="premio-card-role">Promotor</div>
+            <div class="premio-card-role" style = "color: #166534">Promotor</div>
             <div class="premio-card-val" style="color:#15803D">R$ 300</div>
-            <div class="premio-card-desc">Valor máximo individual · 1 ponto = R$ 1,00</div>
+            <div class="premio-card-desc" style="color:#166534">Valor máximo individual · 1 ponto = R$ 1,00</div>
             <div class="premio-card-tag" style="background:#DCFCE7;color:#166534">Cartão Premiação</div>
           </div>
-          <div class="premio-card" style="background:#EFF6FF;border:1.5px solid #BFDBFE">
-            <div class="premio-card-role">Supervisor</div>
-            <div class="premio-card-val" style="color:#1D4ED8">R$ 400</div>
-            <div class="premio-card-desc">Média dos promotores da equipe</div>
-            <div class="premio-card-tag" style="background:#DBEAFE;color:#1E40AF">Cartão Premiação</div>
-          </div>
+         
           <div class="premio-card" style="background:#FFFBEB;border:1.5px solid #FDE68A">
-            <div class="premio-card-role">Álbum Completo · 1ª Equipe</div>
-            <div class="premio-card-val" style="color:#D97706">R$ 600/800</div>
-            <div class="premio-card-desc">Promotor até R$600 · Supervisor até R$800</div>
+            <div class="premio-card-role" style = "color: #92400E">Álbum Completo · 1ª Equipe</div>
+            <div class="premio-card-val" style="color:#D97706">R$ 600</div>
+            <div class="premio-card-desc" style="color:#92400E">Promotor até R$600</div>
             <div class="premio-card-tag" style="background:#FEF3C7;color:#92400E">Dobra de Pontuação</div>
           </div>
           <div class="premio-card" style="background:#FDF4FF;border:1.5px solid #E9D5FF">
-            <div class="premio-card-role">Artilheiro Top</div>
-            <div class="premio-card-val" style="color:#7C3AED">TV 65"</div>
-            <div class="premio-card-desc">2 promotores/exec · 2 supervisores no geral · R$ 3.600</div>
+            <div class="premio-card-role" style = "color: #5B21B6 ">Artilheiro Top</div>
+            <div class="premio-card-val" style="color:#7C3AED">3.000  Pontos (Vale compra) </div>
+            <div class="premio-card-desc" style = "color: #5B21B6">2 promotores por executivo</div>
             <div class="premio-card-tag" style="background:#EDE9FE;color:#5B21B6">Prêmio Especial</div>
           </div>
         </div>
@@ -1211,25 +1206,25 @@ body.theme-b .rules-footer-nav div{color:rgba(232,213,160,.5)}
         <div class="rules-section-head">
           <div class="rsh-icon" style="background:#FEF3C7">⭐</div>
           <div class="rsh-title">As 16 Figurinhas</div>
-          <div class="rsh-badge" style="background:#FEF3C7;color:#92400E">Metas para desbloquear</div>
+          <div class="rsh-badge" style="background:#FEF3C7;color:#92400E">Metas da Equipe</div>
         </div>
         <div class="figurinhas-grid">
-          <div class="fig-item"><div class="fig-icon">📊</div><div class="fig-num">01</div><div class="fig-label">Efetividade</div><div class="fig-value">90%</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">🛒</div><div class="fig-num">02</div><div class="fig-label">PE Promoção</div><div class="fig-value">50% Equipe</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
-          <div class="fig-item"><div class="fig-icon">🔥</div><div class="fig-num">03</div><div class="fig-label">PE Promoção</div><div class="fig-value">100% Equipe</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
-          <div class="fig-item"><div class="fig-icon">✖️</div><div class="fig-num">04</div><div class="fig-label">Cross Selling</div><div class="fig-value">50% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
-          <div class="fig-item"><div class="fig-icon">🖥️</div><div class="fig-num">05</div><div class="fig-label">Terminal</div><div class="fig-value">20% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
-          <div class="fig-item"><div class="fig-icon">🏝️</div><div class="fig-num">06</div><div class="fig-label">Ilha</div><div class="fig-value">20% Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">🌀</div><div class="fig-num">07</div><div class="fig-label">Display</div><div class="fig-value">Turbilhão</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
-          <div class="fig-item"><div class="fig-icon">🏆</div><div class="fig-num">08</div><div class="fig-label">PE Copa</div><div class="fig-value">2 Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">🏆</div><div class="fig-num">09</div><div class="fig-label">PE Copa</div><div class="fig-value">4 Lojas</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
-          <div class="fig-item"><div class="fig-icon">🎆</div><div class="fig-num">10</div><div class="fig-label">PE S. João</div><div class="fig-value">2 Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">🎆</div><div class="fig-num">11</div><div class="fig-label">PE S. João</div><div class="fig-value">4 Lojas</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
-          <div class="fig-item"><div class="fig-icon">🏷️</div><div class="fig-num">12</div><div class="fig-label">MPDV Leve</div><div class="fig-value">25% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
-          <div class="fig-item"><div class="fig-icon">🏷️</div><div class="fig-num">13</div><div class="fig-label">MPDV Leve</div><div class="fig-value">50% Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">📦</div><div class="fig-num">14</div><div class="fig-label">MPDV Pesado</div><div class="fig-value">1 Display</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
-          <div class="fig-item"><div class="fig-icon">📦</div><div class="fig-num">15</div><div class="fig-label">MPDV Pesado</div><div class="fig-value">2 Displays</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
-          <div class="fig-item" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-color:#FDE68A"><div class="fig-icon">📢</div><div class="fig-num" style="color:#D97706">16</div><div class="fig-label">Autofalante</div><div class="fig-value" style="color:#D97706">On Air</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">✨ Lendária</div></div>
+          <div class="fig-item"><div class="fig-icon">📊</div><div class="fig-num">FIGURINHA 01</div><div class="fig-label">Efetividade</div><div class="fig-value">90%</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">🛒</div><div class="fig-num">FIGURINHA 02</div><div class="fig-label">PE Promoção</div><div class="fig-value">50% Equipe</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
+          <div class="fig-item"><div class="fig-icon">🔥</div><div class="fig-num">FIGURINHA 03</div><div class="fig-label">PE Promoção</div><div class="fig-value">100% Equipe</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
+          <div class="fig-item"><div class="fig-icon">✖️</div><div class="fig-num">FIGURINHA 04</div><div class="fig-label">Cross Selling</div><div class="fig-value">50% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
+          <div class="fig-item"><div class="fig-icon">🖥️</div><div class="fig-num">FIGURINHA 05</div><div class="fig-label">Terminal</div><div class="fig-value">20% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
+          <div class="fig-item"><div class="fig-icon">🏝️</div><div class="fig-num">FIGURINHA 06</div><div class="fig-label">Ilha</div><div class="fig-value">20% Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">🌀</div><div class="fig-num">FIGURINHA 07</div><div class="fig-label">Display</div><div class="fig-value">Turbilhão</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
+          <div class="fig-item"><div class="fig-icon">🏆</div><div class="fig-num">FIGURINHA 08</div><div class="fig-label">PE Copa</div><div class="fig-value">3 Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">🏆</div><div class="fig-num">FIGURINHA 09</div><div class="fig-label">PE Copa</div><div class="fig-value">6 Lojas</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
+          <div class="fig-item"><div class="fig-icon">🎆</div><div class="fig-num">FIGURINHA 10</div><div class="fig-label">PE S. João</div><div class="fig-value">3 Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">🎆</div><div class="fig-num">FIGURINHA 11</div><div class="fig-label">PE S. João</div><div class="fig-value">6 Lojas</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
+          <div class="fig-item"><div class="fig-icon">🏷️</div><div class="fig-num">FIGURINHA 12</div><div class="fig-label">MPDV Leve</div><div class="fig-value">25% Lojas</div><div class="fig-rarity" style="background:#F3F4F6;color:#6B7280">Comum</div></div>
+          <div class="fig-item"><div class="fig-icon">🏷️</div><div class="fig-num">FIGURINHA 13</div><div class="fig-label">MPDV Leve</div><div class="fig-value">50% Lojas</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">📦</div><div class="fig-num">FIGURINHA 14</div><div class="fig-label">MPDV Pesado</div><div class="fig-value">1 Display</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">⭐ Rara</div></div>
+          <div class="fig-item"><div class="fig-icon">📦</div><div class="fig-num">FIGURINHA 15</div><div class="fig-label">MPDV Pesado</div><div class="fig-value">2 Displays</div><div class="fig-rarity" style="background:#FDE8D8;color:#9A3412">🔥 Épica</div></div>
+          <div class="fig-item" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-color:#FDE68A"><div class="fig-icon">📢</div><div class="fig-num" style="color:#D97706">FIGURINHA 16</div><div class="fig-label">Autofalante</div><div class="fig-value" style="color:#D97706">On Air</div><div class="fig-rarity" style="background:#FEF3C7;color:#92400E">✨ Lendária</div></div>
         </div>
       </div>
 
@@ -1351,11 +1346,11 @@ const STICKERS = [
   {id:'cross_50pct',       label:'50% Lojas com Cross',            num:'04',code:'ABS-04',icon:'✖', rarity:0},
   {id:'terminal_20pct',    label:'20% Lojas com Terminal',         num:'05',code:'ABS-05',icon:'🖥', rarity:0},
   {id:'ilha_20pct',        label:'20% Lojas com Ilha',             num:'06',code:'ABS-06',icon:'🏝', rarity:1},
-  {id:'display_turbilhao', label:'2 Lojas Display/Turbilhão',      num:'07',code:'ABS-07',icon:'🛒', rarity:0},
-  {id:'criativo_copa_2',   label:'2 Lojas PE Criativo Copa',       num:'08',code:'ABS-08',icon:'⚽', rarity:1},
-  {id:'criativo_copa_4',   label:'4 Lojas PE Criativo Copa',       num:'09',code:'ABS-09',icon:'⚽', rarity:2},
-  {id:'criativo_sj_2',     label:'2 Lojas PE Criativo S.João',     num:'10',code:'ABS-10',icon:'🎆', rarity:1},
-  {id:'criativo_sj_4',     label:'4 Lojas PE Criativo S.João',     num:'11',code:'ABS-11',icon:'🎆', rarity:2},
+  {id:'display_turbilhao', label:'5 Lojas Display/Turbilhão',      num:'07',code:'ABS-07',icon:'🛒', rarity:0},
+  {id:'criativo_copa_2',   label:'3 Lojas PE Criativo Copa',       num:'08',code:'ABS-08',icon:'⚽', rarity:1},
+  {id:'criativo_copa_4',   label:'6 Lojas PE Criativo Copa',       num:'09',code:'ABS-09',icon:'⚽', rarity:2},
+  {id:'criativo_sj_2',     label:'3 Lojas PE Criativo S.João',     num:'10',code:'ABS-10',icon:'🎆', rarity:1},
+  {id:'criativo_sj_4',     label:'6 Lojas PE Criativo S.João',     num:'11',code:'ABS-11',icon:'🎆', rarity:2},
   {id:'mpdv_leve_25',      label:'25% Lojas MPDV Leve',            num:'12',code:'ABS-12',icon:'📋', rarity:0},
   {id:'mpdv_leve_50',      label:'50% Lojas MPDV Leve',            num:'13',code:'ABS-13',icon:'📋', rarity:1},
   {id:'mpdv_pesado_1',     label:'1 Loja MPDV Pesado',             num:'14',code:'ABS-14',icon:'🏋', rarity:1},
@@ -1512,7 +1507,7 @@ function buildCoverPills(){
   document.getElementById('cv-teams').innerHTML=TEAMS.map(t=>`
     <a class="t-pill" href="#" onclick="openAlbum('${t.id}');return false">
       <img src="${flagUrl(t.id)}" alt="${t.name}" width="22" height="15">
-      ${t.name}<span class="pill-pct" id="pill-${t.id}">0%</span>
+      ${t.supervisor.split(' ')[0]}<span class="pill-pct" id="pill-${t.id}">0%</span>
     </a>`).join('');
 }
 
