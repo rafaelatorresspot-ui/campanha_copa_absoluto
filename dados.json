@@ -14,7 +14,9 @@
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
+      "mpdv_pesado_2": true,
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
     },
     "inglaterra": {
       "autofalante": true,
