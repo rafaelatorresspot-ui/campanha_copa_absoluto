@@ -1,50 +1,6 @@
 {
   "equipes": {
-    "holanda": {
-      "pe_50pct_prom": true,
-      "ilha_20pct": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true,
-      "mpdv_pesado_1": true
-    },
-    "espanha": {
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "cross_50pct": true,
-      "terminal_20pct": true,
-      "ilha_20pct": true,
-      "display_turbilhao": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "mexico": {
-      "criativo_copa_2": true,
-      "criativo_copa_4": true,
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "terminal_20pct": true,
-      "ilha_20pct": true,
-      "display_turbilhao": true,
-      "mpdv_leve_25": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "portugal": {
-      "criativo_copa_2": true,
-      "criativo_sj_2": true,
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "cross_50pct": true,
-      "terminal_20pct": true,
-      "ilha_20pct": true,
-      "display_turbilhao": true,
-      "mpdv_leve_25": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "canada": {
+    "japao": {
       "criativo_copa_2": true,
       "criativo_copa_4": true,
       "criativo_sj_2": true,
@@ -54,21 +10,49 @@
       "pe_100pct_prom": true,
       "cross_50pct": true,
       "terminal_20pct": true,
-      "ilha_20pct": true,
+      "display_turbilhao": false,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
+    "alemanha": {
+      "criativo_copa_2": true,
+      "criativo_sj_2": true,
+      "criativo_sj_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
       "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
-    "uruguai": {
-      "criativo_copa_2": true,
-      "criativo_sj_2": true,
+    "franca": {
       "autofalante": true,
       "pe_50pct_prom": true,
       "pe_100pct_prom": true,
-      "terminal_20pct": true,
-      "ilha_20pct": true,
+      "cross_50pct": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": false
+    },
+    "inglaterra": {
+      "autofalante": true
+    },
+    "holanda": {
+      "pe_50pct_prom": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": false
+    },
+    "mexico": {
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
       "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_pesado_1": true,
@@ -84,25 +68,15 @@
       "pe_100pct_prom": true,
       "cross_50pct": true,
       "terminal_20pct": true,
-      "ilha_20pct": true,
-      "display_turbilhao": true,
+      "display_turbilhao": false,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
-    "franca": {
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "pe_100pct_prom": true,
-      "cross_50pct": true,
-      "terminal_20pct": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true,
-      "mpdv_pesado_1": true
-    },
-    "japao": {
+    "canada": {
       "criativo_copa_2": true,
+      "criativo_copa_4": true,
       "criativo_sj_2": true,
       "criativo_sj_4": true,
       "autofalante": true,
@@ -110,27 +84,45 @@
       "pe_100pct_prom": true,
       "cross_50pct": true,
       "terminal_20pct": true,
-      "ilha_20pct": true,
+      "display_turbilhao": false,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
+    "uruguai": {
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
+      "criativo_sj_2": true,
+      "criativo_sj_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
+    "espanha": {
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "cross_50pct": true,
       "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
-    "inglaterra": {
-      "autofalante": true,
-      "autofalante": true,
-      "mpdv_leve_25": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "alemanha": {
+    "portugal": {
       "criativo_copa_2": true,
+      "criativo_copa_4": true,
       "criativo_sj_2": true,
+      "criativo_sj_4": true,
       "autofalante": true,
       "pe_50pct_prom": true,
-      "terminal_20pct": true,
-      "ilha_20pct": true,
+      "pe_100pct_prom": true,
+      "cross_50pct": true,
       "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
@@ -139,5 +131,5 @@
     },
     "_instrucoes": {}
   },
-  "gerado_em": "2026-06-23T15:09:04.863043"
+  "gerado_em": "2026-07-02T13:56:03.454367"
 }
