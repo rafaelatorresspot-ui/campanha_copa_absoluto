@@ -1397,10 +1397,7 @@ body.theme-b .rules-footer-nav div{color:rgba(232,213,160,.5)}
             <span style="font-size:22px;flex-shrink:0;">🏆</span>
             <div style="font-family:'Barlow',sans-serif;font-size:13px;color:rgba(255,255,255,.75);line-height:1.5;">A equipe campeã de todos os confrontos recebe <strong style="color:var(--gold);">+R$ 100,00</strong> adicionais ao prêmio final.</div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:22px;flex-shrink:0;">🎲</span>
-            <div style="font-family:'Barlow',sans-serif;font-size:13px;color:rgba(255,255,255,.75);line-height:1.5;">Os confrontos de cada chave são decididos por <strong style="color:#fff;">sorteio</strong>.</div>
-          </div>
+
         </div>
       </div>
 
@@ -2357,12 +2354,13 @@ function buildMatchCard(team1, team2, match, isLarge, phaseKey){
   const w=f2Winner(match);
   const s1=scoreTxt(m?.score1??null), s2=scoreTxt(m?.score2??null);
   const w1=w==='team1', w2=w==='team2';
-  const iconW = isLarge ? 42 : 32; const iconH = isLarge ? 28 : 21;
-  const nameSz = isLarge ? '13px' : '10.5px';
-  const scoreSz = isLarge ? '22px' : '18px';
-  const scoreBox = isLarge ? 'width:34px;height:28px;' : 'width:26px;height:22px;';
-  const pad = isLarge ? '12px 12px' : '9px 8px';
-  const minW = isLarge ? '200px' : '185px';
+  // Tamanho uniforme para todas as chaves (quartas, semis e final)
+  const iconW = 32; const iconH = 21;
+  const nameSz = '10.5px';
+  const scoreSz = '18px';
+  const scoreBox = 'width:26px;height:22px;';
+  const pad = '9px 8px';
+  const minW = '185px';
   const live = phaseKey ? isMatchLive(match, phaseKey) : false;
   const border = live
     ? 'border:1px solid rgba(239,68,68,.45);box-shadow:0 0 18px rgba(239,68,68,.18);'
