@@ -1132,7 +1132,7 @@ body.theme-b .rules-footer-nav div{color:rgba(232,213,160,.5)}
     <div class="cv-teams" id="cv-teams"></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
       <button class="cv-cta" onclick="openAlbumToRules()">⚽ Abrir Álbum</button>
-      <!-- <button class="cv-cta" onclick="openAlbumToRules()" style="background:transparent;border:2px solid var(--gold);color:var(--gold);box-shadow:none" onmouseover="this.style.background='rgba(245,197,24,.15)'" onmouseout="this.style.background='transparent'">📋 Regras</button> -->
+      <button class="cv-cta" onclick="openAlbumToKnockout()" style="background:transparent;border:2px solid var(--gold);color:var(--gold);box-shadow:none" onmouseover="this.style.background='rgba(245,197,24,.15)'" onmouseout="this.style.background='transparent'">🏆 2ª Fase</button>
     </div>
   </div>
 </div>
@@ -2062,6 +2062,12 @@ function openAlbumToRules(){
   document.getElementById('cover').style.display='none';
   document.getElementById('album').style.display='block';
   showRules();
+}
+
+function openAlbumToKnockout(){
+  document.getElementById('cover').style.display='none';
+  document.getElementById('album').style.display='block';
+  showKnockout();
 }
 
 function openAlbum(tid){document.getElementById('cover').style.display='none';document.getElementById('album').style.display='block';switchTeam(tid||TEAMS[0].id)}
