@@ -2120,8 +2120,8 @@ const FASE2 = {
   chaveB: ['mexico', 'alemanha', 'belgica', 'uruguai'],
 
   // Placar das partidas — edite os números abaixo. null = ainda não definido
-  qa1: { score1: null, score2: null },   // A1 vs A2
-  qa2: { score1: null, score2: null },   // A3 vs A4
+  qa1: { score1: 0, score2: 1 },   // A1 vs A2
+  qa2: { score1: 0, score2: 0 },   // A3 vs A4
   qb1: { score1: null, score2: null },   // B1 vs B2
   qb2: { score1: null, score2: null },   // B3 vs B4
   sa1: { score1: null, score2: null },   // vencedor qa1 vs vencedor qa2
@@ -2267,6 +2267,13 @@ function f2WinnerTeam(match, t1id, t2id){
   if(!w) return null;
   return w==='team1' ? f2Team(t1id) : f2Team(t2id);
 }
+// Classificado só avança para a próxima fase depois que o período da
+// fase de origem termina — assim o vencedor não "vaza" para a chave
+// seguinte enquanto o confronto ainda está em andamento.
+function f2QualifiedTeam(match, t1id, t2id, phaseKey){
+  if(!isPhaseEnded(phaseKey)) return null;
+  return f2WinnerTeam(match, t1id, t2id);
+}
 function scoreTxt(v){ return v===null?'?':String(v); }
 
 // ── "LIVE" detection — is a match currently inside its phase window? ──
@@ -2285,12 +2292,19 @@ function parsePeriodoRange(periodoStr){
 function isMatchLive(match, phaseKey){
   const m = FASE2[match];
   if(!m) return false;
-  const hasResult = m.score1!==null && m.score2!==null;
-  if(hasResult) return false; // já tem placar definido — não é mais "em andamento"
   const range = parsePeriodoRange(FASE2.periodos[phaseKey]);
   if(!range) return false;
   const now = new Date();
+  // "Em andamento" enquanto a data atual estiver dentro do período,
+  // mesmo que o placar já tenha sido preenchido.
   return now>=range.start && now<=range.end;
+}
+// Fase encerrada = data atual já passou do fim do período.
+// Só depois disso o vencedor (troféu/destaque) é revelado.
+function isPhaseEnded(phaseKey){
+  const range = parsePeriodoRange(FASE2.periodos[phaseKey]);
+  if(!range) return false;
+  return new Date() > range.end;
 }
 
 // ── Goal video state — track previous scores to detect new goals ──
@@ -2353,7 +2367,12 @@ function buildMatchCard(team1, team2, match, isLarge, phaseKey){
   const m=FASE2[match];
   const w=f2Winner(match);
   const s1=scoreTxt(m?.score1??null), s2=scoreTxt(m?.score2??null);
-  const w1=w==='team1', w2=w==='team2';
+  // O vencedor (destaque + troféu) só é revelado depois que o período
+  // da fase termina. Enquanto a data atual estiver dentro do período,
+  // o card permanece "em andamento" mesmo com o placar já preenchido.
+  const ended = phaseKey ? isPhaseEnded(phaseKey) : true;
+  const showWinner = ended && !!w;
+  const w1=showWinner && w==='team1', w2=showWinner && w==='team2';
   // Tamanho uniforme para todas as chaves (quartas, semis e final)
   const iconW = 32; const iconH = 21;
   const nameSz = '10.5px';
@@ -2412,14 +2431,14 @@ function renderBracket(){
   const a1=f2Team(a1id),a2=f2Team(a2id),a3=f2Team(a3id),a4=f2Team(a4id);
   const b1=f2Team(b1id),b2=f2Team(b2id),b3=f2Team(b3id),b4=f2Team(b4id);
 
-  const sa1t1=f2WinnerTeam('qa1',a1id,a2id);
-  const sa1t2=f2WinnerTeam('qa2',a3id,a4id);
-  const sb1t1=f2WinnerTeam('qb1',b1id,b2id);
-  const sb1t2=f2WinnerTeam('qb2',b3id,b4id);
+  const sa1t1=f2QualifiedTeam('qa1',a1id,a2id,'quartasA');
+  const sa1t2=f2QualifiedTeam('qa2',a3id,a4id,'quartasA');
+  const sb1t1=f2QualifiedTeam('qb1',b1id,b2id,'quartasB');
+  const sb1t2=f2QualifiedTeam('qb2',b3id,b4id,'quartasB');
 
-  const fnt1=f2WinnerTeam('sa1',sa1t1?.id,sa1t2?.id);
-  const fnt2=f2WinnerTeam('sb1',sb1t1?.id,sb1t2?.id);
-  const finalWinner=f2WinnerTeam('fn',fnt1?.id,fnt2?.id);
+  const fnt1=f2QualifiedTeam('sa1',sa1t1?.id,sa1t2?.id,'semi');
+  const fnt2=f2QualifiedTeam('sb1',sb1t1?.id,sb1t2?.id,'semi');
+  const finalWinner=f2QualifiedTeam('fn',fnt1?.id,fnt2?.id,'final');
 
   // ── Detect new goals since the last render. We only collect *which*
   // scoreboard should animate here; the actual DOM elements don't exist
@@ -2593,7 +2612,7 @@ function renderBracket(){
 
   // Winner banner
   const banner=document.getElementById('winner-banner');
-  if(finalWinner&&finalWinner.name&&finalWinner.name!=='—'){
+  if(finalWinner&&finalWinner.name&&finalWinner.name!=='—'&&isPhaseEnded('final')){
     banner&&banner.classList.add('visible');
     const wn=document.getElementById('winner-name'); if(wn) wn.textContent=finalWinner.name;
     const wf=document.getElementById('winner-icon');
