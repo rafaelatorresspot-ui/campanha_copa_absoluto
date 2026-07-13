@@ -1,5 +1,28 @@
 {
   "equipes": {
+    "franca": {
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "cross_50pct": true,
+      "terminal_20pct": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true
+    },
+    "uruguai": {
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
+      "criativo_sj_2": true,
+      "criativo_sj_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "cross_50pct": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
     "canada": {
       "criativo_copa_2": true,
       "criativo_copa_4": true,
@@ -16,19 +39,9 @@
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
-    "alemanha": {
-      "criativo_copa_2": true,
-      "criativo_copa_4": true,
-      "criativo_sj_2": true,
-      "criativo_sj_4": true,
+    "inglaterra": {
       "autofalante": true,
-      "pe_50pct_prom": true,
-      "pe_100pct_prom": true,
-      "display_turbilhao": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
+      "mpdv_pesado_1": true
     },
     "espanha": {
       "autofalante": true,
@@ -39,26 +52,6 @@
       "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "franca": {
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "pe_100pct_prom": true,
-      "cross_50pct": true,
-      "terminal_20pct": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true
-    },
-    "mexico": {
-      "criativo_copa_2": true,
-      "criativo_copa_4": true,
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "pe_100pct_prom": true,
-      "display_turbilhao": true,
-      "mpdv_leve_25": true,
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
@@ -77,6 +70,35 @@
       "pe_100pct_prom": true,
       "cross_50pct": true,
       "terminal_20pct": true,
+      "ilha_20pct": true,
+      "mpdv_leve_25": true,
+      "mpdv_leve_50": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
+    "mexico": {
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "display_turbilhao": true,
+      "mpdv_leve_25": true,
+      "mpdv_pesado_1": true,
+      "mpdv_pesado_2": true
+    },
+    "belgica": {
+      "criativo_copa_2": true,
+      "criativo_copa_4": true,
+      "criativo_sj_2": true,
+      "criativo_sj_4": true,
+      "autofalante": true,
+      "pe_50pct_prom": true,
+      "pe_100pct_prom": true,
+      "cross_50pct": true,
+      "terminal_20pct": true,
+      "ilha_20pct": true,
+      "display_turbilhao": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
@@ -97,10 +119,7 @@
       "mpdv_pesado_1": true,
       "mpdv_pesado_2": true
     },
-    "inglaterra": {
-      "autofalante": true
-    },
-    "belgica": {
+    "alemanha": {
       "criativo_copa_2": true,
       "criativo_copa_4": true,
       "criativo_sj_2": true,
@@ -108,24 +127,8 @@
       "autofalante": true,
       "pe_50pct_prom": true,
       "pe_100pct_prom": true,
-      "cross_50pct": true,
       "terminal_20pct": true,
-      "ilha_20pct": true,
       "display_turbilhao": true,
-      "mpdv_leve_25": true,
-      "mpdv_leve_50": true,
-      "mpdv_pesado_1": true,
-      "mpdv_pesado_2": true
-    },
-    "uruguai": {
-      "criativo_copa_2": true,
-      "criativo_copa_4": true,
-      "criativo_sj_2": true,
-      "criativo_sj_4": true,
-      "autofalante": true,
-      "pe_50pct_prom": true,
-      "pe_100pct_prom": true,
-      "cross_50pct": true,
       "mpdv_leve_25": true,
       "mpdv_leve_50": true,
       "mpdv_pesado_1": true,
@@ -133,5 +136,5 @@
     },
     "_instrucoes": {}
   },
-  "gerado_em": "2026-07-10T11:21:20.614046"
+  "gerado_em": "2026-07-13T09:57:52.005367"
 }
